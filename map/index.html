@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Weather Map</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=9">
+  <link rel="stylesheet" type="text/css" href="dev/style.min.css">
+</head>
+
+<body>
+  <ul>
+  </ul>
+
+</body>
+
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+<script src="dev/timeago.jquery.js"></script>
+<script>
+  var $body = $("body");
+  var $ul = $("ul");
+
+  $(function(){
+    console.log("go");
+
+    $.getJSON("get_weather.php", function(data) {
+      console.log(data);
+
+        $.each(data, function(i, visitor){
+          var coord = visitor.geo;
+          var address = visitor.address;
+          var browser = visitor.browser;
+          var os = visitor.os;
+          var time = visitor.time;
+
+          var version = browser.split(" ");
+
+          var timeago = $.timeago(time);
+
+          var listing = '<a href="https://www.google.com/maps/@' + coord + ',18z">'
+                        + '<span class="address">' + address + '</span>'
+                        + '<span class="browser ' + version[0] + ' ' +  os + '">' + version[1] + '</span>'
+                        + '<time>' + timeago + '</time>'
+                      + '</a>';
+
+          console.log(address);
+          console.log(address.indexOf("408 Emerald Drive"));
+
+          if(address.indexOf("Emerald Drive") <= -1) {
+            $ul.prepend(listing);
+          }
+        });
+    });
+  });
+</script>
+</html>

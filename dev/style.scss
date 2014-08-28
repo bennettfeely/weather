@@ -1,0 +1,184 @@
+* {
+  font-size: 100%;
+  font-weight: bold;
+  font-style: normal;
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  border: 0;
+}
+
+section, figure { display: block; }
+
+$black : hsl(0,0%, 40%);
+$pallette : (#ffc256,#f3c755,#e6cc57,#d8d05b,#cbd461,#bdd869,#b0db72,#a2dd7c,#94e087,#85e193,#76e39f,#67e4ab,#57e5b8,#46e5c4,#34e5d0,#21e5db,#0be5e5,#00e4ef);
+$rotation : 5%;
+$dim : .75;
+$font-size : 2.25rem;
+
+
+$radius: .25rem;
+$transition : .45s;
+$bounce : cubic-bezier(.5,.9,.25,1.15);
+
+$shadow : rgba(0,0,0,.4);
+$radius: .25rem;
+
+@-ms-viewport { width: device-width; }
+    @viewport { width: device-width; }
+
+
+html, body { height: 100%;  }
+body {
+  position: relative;
+  font: bold 1.8rem "Source Sans Pro", sans-serif;
+    @media (min-width: 43em) { font-size: 2.5rem; }
+  line-height: 1.5;
+  background: hsl(0,0,30%);
+  color: #777;
+}
+
+.page {
+  display: block;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  overflow: hidden;
+}
+
+.card {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: $black;
+  overflow-y: auto;
+  animation: rise 1s both;
+
+  &.allow-access { background: hsl(0,0,20%); animation: none; }
+  &.getting { background: hsl(0,0,10%); }
+  &.final { background: hsl(0,0,0); }
+}
+
+@keyframes rise {
+  from {
+    transform: translateY(140%);
+  }
+}
+
+.container {
+  margin: 0 auto;
+  max-width: 82rem;
+  padding: 1.5rem;
+    @media (min-width: 28em) { padding: 2rem; }
+}
+
+
+
+h1 {
+  display: inline;
+
+  @for $i from 1 to length($pallette) {
+    $color : nth($pallette, $i);
+
+    &:nth-child(#{$i}) {
+      color: rgba($color, $dim);
+      em {
+        color: $color;
+      }
+    }
+  }
+}
+
+.loading-dots {
+  span {
+    display: inline-block;
+    animation: loading 1s ease-in-out infinite;
+    transform-origin: center center;
+
+    &:nth-child(2) { animation-delay: .33s; }
+    &:nth-child(3) { animation-delay: .66s; }
+  }
+}
+
+@keyframes loading {
+  40% {
+    transform: translate3d(0,-.15em,0);
+
+  }
+}
+
+
+em { font-weight: bolder; }
+
+sup {
+  display: inline-block;
+  font-size: $font-size/1.5;
+  vertical-align: baseline;
+  padding-left: $font-size/10;
+}
+
+input, button {
+  $color : nth($pallette, 2);
+
+  font: inherit;
+  background: transparent;
+  color: $color;
+
+  &:hover, &:focus {
+    outline: 0;
+  }
+}
+
+input {
+  $color : nth($pallette, 1);
+
+  display: block;
+  box-shadow: inset 0 0 0 .25rem rgba($color, $dim);
+  padding: $font-size/3 $font-size/1.5;
+  border-radius: $radius;
+  width: 100%;
+  max-width: 40rem;
+  margin-top: .75em;
+  transition:
+    border-color .3s,
+    box-shadow .3s;
+}
+
+button {
+  display: inline-block;
+  cursor: pointer;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+@font-face {
+  font-family: 'Source Sans Pro';
+  font-style: normal;
+  font-weight: 400;
+  src: local('Source Sans Pro'), local('SourceSansPro-Regular'), url(http://themes.googleusercontent.com/static/fonts/sourcesanspro/v7/ODelI1aHBYDBqgeIAH2zlNHq-FFgoDNV3GTKpHwuvtI.woff) format('woff');
+}
+@font-face {
+  font-family: 'Source Sans Pro';
+  font-style: normal;
+  font-weight: 700;
+  src: local('Source Sans Pro Bold'), local('SourceSansPro-Bold'), url(http://themes.googleusercontent.com/static/fonts/sourcesanspro/v7/toadOcfmlt9b38dHJxOBGIqjGYJUyOXcBwUQbRaNH6c.woff) format('woff');
+}
+@font-face {
+  font-family: 'Source Sans Pro';
+  font-style: normal;
+  font-weight: 900;
+  src: local('Source Sans Pro Black'), local('SourceSansPro-Black'), url(http://themes.googleusercontent.com/static/fonts/sourcesanspro/v7/toadOcfmlt9b38dHJxOBGC7eGk4PJkA83J1AXCmgUfc.woff) format('woff');
+}

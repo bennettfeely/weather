@@ -1,0 +1,133 @@
+* {
+  font-size: 100%;
+  font-style: normal;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+  vertical-align: baseline;
+  margin: 0;
+  padding: 0;
+  border: 0;
+}
+
+section,
+figure {
+  display: block;
+}
+
+@-ms-viewport {
+  width: device-width;
+}
+
+@viewport {
+  width: device-width;
+}
+
+html,
+body {
+  height: 100%;
+}
+
+body {
+  font: 14px/14px monospace;
+  background: dimgray;
+}
+
+ul {
+  display: block;
+  width: 100%;
+  padding: 10px;
+}
+
+a {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  padding: 10px 15px;
+  background: white;
+  color: black;
+  -webkit-transition: .3s;
+  transition: .3s;
+  text-decoration: none;
+  border-bottom: thin solid rgba(0, 0, 0, 0.2);
+}
+
+a:visited {
+  color: gray;
+}
+
+a:nth-child(odd) {
+  background: whitesmoke;
+}
+
+a:hover {
+  background: #ffe8a3;
+  -webkit-transition: 0;
+  transition: 0;
+  color: black;
+}
+
+a:active {
+  background: lightblue;
+}
+
+span {
+  display: inline-block;
+}
+
+span:last-child {
+  width: 120px;
+}
+
+.address {
+  -webkit-box-flex: 1;
+  -webkit-flex: 1;
+  -ms-flex: 1;
+  flex: 1;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  padding-right: 20px;
+}
+
+.browser {
+  width: 30px;
+  text-align: left;
+}
+
+.browser:before {
+  font-family: "icon";
+  padding-right: .25rem;
+}
+
+.browser.chrome:before {
+  content: "\e605";
+}
+
+.browser.firefox:before {
+  content: "\e606";
+}
+
+.browser.IE:before {
+  content: "\e607";
+}
+
+.browser.opera:before {
+  content: "\e608";
+}
+
+.browser.safari:before {
+  content: "\e609";
+}
+
+time {
+  width: 170px;
+  text-align: right;
+}
+
+@font-face {
+  font-family: 'icon';
+  src: url(icomoon.woff) format("woff");
+  font-weight: normal;
+  font-style: normal;
+}

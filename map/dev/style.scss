@@ -1,0 +1,108 @@
+* {
+  font-size: 100%;
+  font-style: normal;
+  box-sizing: border-box;
+  vertical-align: baseline;
+  margin: 0;
+  padding: 0;
+  border: 0;
+}
+
+section, figure { display: block; }
+
+$black : hsl(0,0%,25%);
+$font-size : 2.25rem;
+
+$radius: .25rem;
+$transition : .45s;
+$bounce : cubic-bezier(.5,.9,.25,1.15);
+
+$shadow : rgba(0,0,0,.4);
+$radius: .25rem;
+
+@-ms-viewport { width: device-width; }
+    @viewport { width: device-width; }
+
+
+html, body { height: 100%; }
+body {
+  font: 14px/14px monospace;
+  background: dimgray;
+}
+
+ul {
+  display: block;
+  width: 100%;
+  padding: 10px;
+}
+
+a {
+  display: flex;
+  padding: 10px 15px;
+  background: white;
+  color: black;
+  transition: .3s;
+  text-decoration: none;
+  border-bottom: thin solid rgba(0,0,0,.2);
+
+  &:visited { color: gray; }
+
+  &:nth-child(odd) { background: whitesmoke; }
+
+  &:hover {
+    background: hsl(45,100%,82%);
+    transition: 0;
+    color: black;
+  }
+
+  &:active {
+    background: lightblue;
+  }
+
+}
+
+span {
+  display: inline-block;
+
+  &:last-child {
+    width: 120px;
+  }
+}
+
+.address {
+  flex: 1;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  padding-right: 20px;
+}
+
+
+.browser {
+  width: 30px;
+  text-align: left;
+
+  &:before {
+    font-family: "icon";
+    padding-right: .25rem;
+  }
+
+  &.chrome:before { content: "\e605"; }
+  &.firefox:before { content: "\e606"; }
+  &.IE:before { content: "\e607"; }
+  &.opera:before { content: "\e608"; }
+  &.safari:before { content: "\e609"; }
+}
+
+time {
+  width: 170px;
+  text-align: right;
+}
+
+
+@font-face {
+  font-family: 'icon';
+  src: url(icomoon.woff) format('woff');
+  font-weight: normal;
+  font-style: normal;
+}
